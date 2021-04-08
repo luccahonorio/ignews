@@ -9,14 +9,14 @@ interface SubscribeButtonProps {
   priceId: string
 }
 
-interface UserSubscriptionSession extends Session {
-  activeSubscription?: any;
-}
+// interface UserSubscriptionSession extends Session {
+//   activeSubscription?: any;
+// }
 
-type SessionProps = [UserSubscriptionSession, boolean]
+// type SessionProps = [UserSubscriptionSession, boolean]
 
 export default function SubscribeButton({ priceId }: SubscribeButtonProps) {
-  const [session]: SessionProps = useSession()
+  const [session] = useSession()
   const router = useRouter()
 
   async function handleSubscribe() {
@@ -25,10 +25,10 @@ export default function SubscribeButton({ priceId }: SubscribeButtonProps) {
       return
     }
 
-    if (session?.activeSubscription) {
-      router.push("/posts")
-      return
-    }
+    // if (session?.activeSubscription) {
+    //   router.push("/posts")
+    //   return
+    // }
 
     try {
       const response = await api.post("/subscribe")
